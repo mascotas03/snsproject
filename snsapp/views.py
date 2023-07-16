@@ -44,3 +44,9 @@ def listfunc(request):
 def detailfunc(request, pk):
     object = SnsModel.objects.get(pk=pk)
     return render(request, 'detail.html', {"object": object})
+
+def goodfunc(request, pk):
+    object = SnsModel.objects.get(pk=pk)
+    object.good += 1
+    object.save()
+    return redirect('list')

@@ -17,8 +17,8 @@
         <P>投稿者： {{ object.author }} </P>
         <p>内容：{{object.content}} </p>
         <p><img src="{{object.images.url}}" width="300"></p>
-        <button type="button" class="btn btn-primary btn-sm">いいね♡ : {{ object.good }} </button>
-        <button type="button" class="btn btn-secondary btn-sm">既読にする : {{ object.read }} </button>
+        <a href="{% url 'good' object.pk %}" class="btn btn-primary btn-sm "  role="button" aria-disabled="true">いいねする : {{ object.good }} </a>
+        <a href="{% url 'read' object.pk %}" class="btn btn-secondary btn-sm "  role="button" aria-disabled="true">既読にする : {{ object.read }} </a>     
     </div>
     <a href="{% url 'list' %}">戻る</a> 
 </div>
