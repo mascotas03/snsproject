@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from . models import SnsModel
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here. function based view
 
@@ -31,6 +31,7 @@ def loginfunc(request):
             return redirect('login')
     return render(request, "login.html")
 
+@login_required
 def listfunc(request):
     object_list = SnsModel.objects.all()
     return render(request, "list.html", {"object_list": object_list}) 
