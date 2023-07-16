@@ -43,10 +43,23 @@ def listfunc(request):
 
 def detailfunc(request, pk):
     object = SnsModel.objects.get(pk=pk)
-    return render(request, 'detail.html', {"object": object})
+    username = request.user.username
+    return render(request, 'detail.html', {"object": object}) #Bool型をデータとして送れないのではないか・
 
 def goodfunc(request, pk):
     object = SnsModel.objects.get(pk=pk)
     object.good += 1
     object.save()
     return redirect('list')
+
+def readfunc(request, pk):
+    object = SnsModel.objects.get(pk=pk)
+    username = request.user.get_username()
+    if username in object.readwho:
+        return redirect('list')
+    else:
+        object.read += 1
+        object.readwho = object.readwho + " " + request.user.username
+        object.save()
+        return redirect('list')
+    
