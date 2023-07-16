@@ -14,8 +14,8 @@ def signupfunc(request):
             return render(request, "signup.html", {"error":"このユーザーは登録されています"})
         except:
             user = User.objects.create_user(username2, "", password2)
-            return render(request, "signup.html",{"some":"shino"})  
-    return render(request, "signup.html",{"some":"shino"})  #templateとdataを組み合わせたものをレスポンスする
+            return render(request, "list.html")  
+    return render(request, "signup.html")  #templateとdataを組み合わせたものをレスポンスする
 
 def loginfunc(request):
     if request.method == "POST":
