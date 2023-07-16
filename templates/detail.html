@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block customcss %}
+{% endblock customcss %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+    社内用SNS
+  </div>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+
+    <div class="alert alert-success" role="alert">
+        <p>タイトル： {{ object.title }} </p>
+        <P>投稿者： {{ object.author }} </P>
+        <p>内容：{{object.content}} </p>
+        <p><img src="{{object.images.url}}" width="300"></p>
+        <button type="button" class="btn btn-primary btn-sm">いいね♡ : {{ object.good }} </button>
+        <button type="button" class="btn btn-secondary btn-sm">既読にする : {{ object.read }} </button>
+    </div>
+    <a href="{% url 'list' %}">戻る</a> 
+</div>
+{% endblock content%}

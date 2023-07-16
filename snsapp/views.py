@@ -40,3 +40,7 @@ def logoutfunc(request):
 def listfunc(request):
     object_list = SnsModel.objects.all()
     return render(request, "list.html", {"object_list": object_list}) 
+
+def detailfunc(request, pk):
+    object = SnsModel.objects.get(pk=pk)
+    return render(request, 'detail.html', {"object": object})
