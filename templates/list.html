@@ -11,12 +11,14 @@
 
 {% block content %}
 <div class="container">
+    {% for item in object_list %}
     <div class="alert alert-success" role="alert">
-        <p>タイトル：</p>
-        <P>投稿者：</P>
-        <button type="button" class="btn btn-primary btn-sm">いいね♡</button>
-        <button type="button" class="btn btn-secondary btn-sm">既読</button>
+        <p>タイトル： {{ item.title }} </p>
+        <P>投稿者： {{ item.author }} </P>
+        <button type="button" class="btn btn-primary btn-sm">いいね♡ : {{ item.good }} </button>
+        <button type="button" class="btn btn-secondary btn-sm">既読 : {{ item.read }} </button>
     </div>
+    {% endfor %}
 </div>
 {% endblock content%}
 
