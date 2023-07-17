@@ -5,12 +5,16 @@
 
 {% block header %}
 <div class="alert alert-primary" role="alert">
-    社内用SNS
-  </div>
+    <p class="subject">社内用SNS</p>
+</div>
+
 {% endblock header %}
 
 {% block content %}
 <div class="container">
+    <a class="create" href="{% url 'create' %}">新規作成</a> 
+    <a class="logout" href="{% url 'logout' %}">ログアウト</a>
+    <br>
     {% for item in object_list %}
     <div class="alert alert-success" role="alert">
         <p>タイトル：<a href="{% url 'detail' item.pk %}">{{ item.title }}</a> </p>
@@ -19,7 +23,8 @@
         <button type="button" class="btn btn-secondary btn-sm">既読 : {{ item.read }} </button>
     </div>
     {% endfor %}
-</div>
+
+</div> 
 {% endblock content%}
 
 

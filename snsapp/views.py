@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from . models import SnsModel
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
 # Create your views here. function based view
 
@@ -63,3 +65,8 @@ def readfunc(request, pk):
         object.save()
         return redirect('list')
     
+class BoardCreate(CreateView):
+    template_name = "create.html"
+    model = SnsModel
+    fields = ("title", "content", "author", "images")
+    success_url = reverse_lazy("list")
